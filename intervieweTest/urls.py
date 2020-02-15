@@ -20,5 +20,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^show/',views.show)
+    url(r'^show/',views.show),
+    url(r'^inquiry/',views.show)
+
 ]

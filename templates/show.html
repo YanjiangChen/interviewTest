@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')
+    </script>
 </head>
 <body>
-
+<form action="/show/" method="POST">
+    {% csrf_token %}
+    <p>
+        客户端号：<input id="num" type="text" name="user"  placeholder="客户端号" />
+    </p>
+    <p>
+        分数：<input type="text" name="user" id="mark" placeholder="分数" />
+    </p>
+    <input type="button" id="sub" value="提交" onclick="f()"/>
+    <input type="button" value="获取排行"/>
+</form>
+<script>
+ <!--{% csrf_token %}-->
+ function f(){
+    var nameMark = $("#num").val()
+    console.log(nameMark)
+    var mark = $("#mark").val()
+    $.ajax({
+        type: 'POST',
+        url:'/inquiry/',
+        data:{
+            'nameMark':nameMark,
+            'newMark':mark,
+        },
+        datatype:'json'
+    })
+}
+</script>
 </body>
 </html>
